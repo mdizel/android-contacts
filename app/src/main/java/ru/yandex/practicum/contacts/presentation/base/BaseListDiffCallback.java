@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 public class BaseListDiffCallback <T extends ListDiffInterface<T>> extends DiffUtil.ItemCallback<T>  {
     @Override
     public boolean areItemsTheSame( @NonNull T oldItem,  @NonNull T newItem) {
-        return false;
+        return oldItem.theSameAs(newItem);
     }
 
     @Override
@@ -12,7 +12,6 @@ public class BaseListDiffCallback <T extends ListDiffInterface<T>> extends DiffU
         return oldItem.equals(newItem);
     }
 
-    @Nullable
     @Override
     public Object getChangePayload(@NonNull T oldItem, @NonNull T newItem) {
         return newItem;
